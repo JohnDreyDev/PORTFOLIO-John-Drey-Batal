@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#242424" id="theme-color-meta">
+  <meta name="description"
+    content="John Drey Batal's personal portfolio featuring projects, certificates, and creative work.">
+  <title>John Drey Batal | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script>
+    try {
+      document.documentElement.dataset.theme =
+        localStorage.getItem("portfolio-theme") || "dark";
+    } catch {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Liquid distortion filter -->
+  <svg class="liquid-filter-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <filter id="liquid-distortion" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="2" seed="8" result="liquidNoise">
+        <animate attributeName="baseFrequency" dur="1.2s" values="0.012 0.035; 0.018 0.05; 0.012 0.035"
+          repeatCount="indefinite" />
+      </feTurbulence>
+
+      <feDisplacementMap in="SourceGraphic" in2="liquidNoise" scale="48" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+
+  <div class="theme-liquid" id="theme-liquid" aria-hidden="true"></div>
+
+  <div class="page-loader" id="page-loader" aria-label="Loading portfolio">
+    <div class="loader" aria-label="Loading..."></div>
+  </div>
+
+  <header class="topbar">
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="nav-link is-active" href="#home">Home</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#explore">Explore</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Light / dark switch at the top-right -->
+  <div class="theme-control-wrap">
+    <label class="theme-control" for="theme-toggle" title="Switch color mode">
+      <span class="sr-only" id="theme-toggle-label">Switch to light mode</span>
+      <span class="toggle">
+        <input class="toggle-state" id="theme-toggle" type="checkbox" role="switch" aria-label="Switch to light mode">
+        <span class="indicator" aria-hidden="true"></span>
+      </span>
+    </label>
+  </div>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section class="hero section-wrap" id="home">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <h1>I'm John<span class="title-period">.</span></h1>
+
+          <p class="hero-role">
+            <span>I'm</span>
+            <span class="role-rotator" id="role-rotator">an aspiring Automation VA</span>
+          </p>
+
+          <p class="hero-description">
+            I enjoy finding useful tools, organizing ideas, and turning everyday
+            tasks into clearer, simpler workflows. I'm always learning and
+            building things that help me improve.
+          </p>
+
+          <p class="sr-only">
+            I'm an aspiring Automation Virtual Assistant and an IT student.
+          </p>
+        </div>
+
+        <!-- Transparent portrait with embossed word behind it -->
+        <div class="portrait-stage">
+          <span class="portrait-wordmark" aria-hidden="true">PORTFOLIO</span>
+
+          <div class="portrait-shell">
+            <img class="profile-photo" src="assets/profile-photo.png" alt="John Drey Batal" fetchpriority="high">
+            <span class="portrait-fallback" hidden>
+              Add your image to assets/profile-photo.png
+            </span>
+          </div>
+        </div>
+
+        <!-- Share button reveals LinkedIn and GitHub -->
+        <aside class="hero-social" aria-label="Social links">
+          <p class="social-label">FIND ME ONLINE</p>
+
+          <div class="social-fan" id="social-fan">
+            <div class="social-links" id="social-links">
+              <a class="social-link linkedin-link" href="https://www.linkedin.com/in/john-drey-batal-3944aa445/"
+                target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" title="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.46v6.29ZM5.34 7.43a2.06 2.06 0 1 1 .02-4.12 2.06 2.06 0 0 1-.02 4.12ZM7.12 20.45H3.56V8.99h3.56v11.46ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
+                </svg>
+              </a>
+
+              <a class="social-link github-link" href="https://github.com/" target="_blank" rel="noopener noreferrer"
+                aria-label="Open GitHub profile" title="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.08c-3.1.68-3.76-1.31-3.76-1.31-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.11-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3.01 0 4.3-2.61 5.24-5.1 5.52.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
+                </svg>
+              </a>
+
+              <a class="social-link whatsapp-link" href="https://wa.me/639366478496" target="_blank"
+                rel="noopener noreferrer" aria-label="Chat with me on WhatsApp" title="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.437-9.884 9.89-9.884 2.64.001 5.122 1.03 6.986 2.896a9.825 9.825 0 0 1 2.893 6.99c-.003 5.45-4.438 9.885-9.885 9.89m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.89c-.001 2.096.547 4.14 1.588 5.946L.05 24l6.312-1.655a11.882 11.882 0 0 0 5.684 1.448h.005c6.554 0 11.89-5.336 11.893-11.89a11.816 11.816 0 0 0-3.48-8.415Z" />
+                </svg>
+              </a>
+            </div>
+
+            <button class="share-toggle" id="share-toggle" type="button" aria-label="Show social links"
+              aria-expanded="false" aria-controls="social-links" title="Show social links">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a3.27 3.27 0 0 0 0-1.39l7.05-4.11a3 3 0 1 0-.94-1.75L7.97 9.56a3 3 0 1 0 0 4.88l7.13 4.16a3 3 0 1 0 2.9-2.52Z" />
+              </svg>
+            </button>
+          </div>
+
+          <p class="social-hint"></p>
+        </aside>
+      </div>
+
+      <a class="scroll-cue" href="#about">
+        <span>SCROLL TO EXPLORE</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </a>
+    </section>
+
+
+    <!-- 2. ABOUT + STATS -->
+    <section class="about section-wrap" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">INTRODUCTION</p>
+        <h2>About <span>Me</span></h2>
+      </div>
+
+      <div class="about-card neumorphic-card">
+        <div class="about-copy">
+          <p>
+            I'm a curious and creative person who likes learning how things work,
+            exploring useful tools, and solving problems one step at a time.
+          </p>
+          <p>
+            I work best when I can understand the goal, organize the details,
+            test what works, and keep improving the result. I'm building my
+            skills through personal practice and school projects.
+          </p>
+        </div>
+
+        <div class="about-detail">
+          <span class="detail-label">BASED IN</span>
+          <p>Davao City, Philippines</p>
+          <span class="detail-rule" aria-hidden="true"></span>
+          <span class="detail-label">CURRENTLY</span>
+          <p>University of Mindanao</p>
+          <p>BS Information Technology</p>
+
+          <span class="detail-rule" aria-hidden="true"></span>
+
+          <div class="personal-contact">
+            <div class="contact-detail">
+              <span class="contact-label">PHONE</span>
+              <a href="tel:+639366478496">+63 936-647-8496</a>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-label">EMAIL</span>
+              <a href="mailto:johndrey.va@gmail.com" class="email-rotator is-visible"
+                id="contactEmailRotator">johndrey.va@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row" aria-label="Portfolio overview">
+        <div class="stat-card neumorphic-card">
+          <strong>06</strong><span>Certificates</span>
+        </div>
+        <div class="stat-card neumorphic-card">
+          <strong>03</strong><span>Projects</span>
+        </div>
+        <div class="stat-card neumorphic-card">
+          <strong>2029</strong><span>Expected graduation</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. PROJECTS / CERTIFICATES / TOOLS -->
+    <section class="explore section-wrap" id="explore">
+      <div class="section-heading">
+        <p class="eyebrow">A FEW THINGS I'VE WORKED ON</p>
+        <h2>Explore <span>my work</span></h2>
+        <p class="section-intro">
+        </p>
+      </div>
+
+      <div class="portfolio-board neumorphic-card">
+        <div class="board-tabs" role="tablist" aria-label="Portfolio content">
+          <button class="board-tab is-active" id="tab-projects" type="button" role="tab" aria-selected="true"
+            aria-controls="panel-projects" data-tab="projects">Projects</button>
+
+          <button class="board-tab" id="tab-certificates" type="button" role="tab" aria-selected="false"
+            aria-controls="panel-certificates" data-tab="certificates" tabindex="-1">Certificates <span
+              class="tab-count">06</span></button>
+
+          <button class="board-tab" id="tab-tools" type="button" role="tab" aria-selected="false"
+            aria-controls="panel-tools" data-tab="tools" tabindex="-1">Tools I use</button>
+        </div>
+
+        <div class="board-content">
+
+          <!-- PROJECTS -->
+          <div class="board-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects"
+            data-panel="projects">
+            <div class="projects-grid">
+
+              <button class="project-card" type="button"
+                data-project-title="Smart Lead Management and Email Automation System"
+                aria-label="Open Smart Lead Management project preview">
+                <span class="project-image">
+                  <img src="assets/projects/smart-lead-management.png"
+                    data-fallback="assets/projects/previews/smart-lead-management.svg"
+                    alt="Smart Lead Management project preview" loading="lazy">
+                  <span class="media-empty" hidden>Project preview not added yet</span>
+                  <span class="image-open" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="project-card-content">
+                  <span class="project-type">PRACTICE AUTOMATION</span>
+                  <span class="project-title">Smart Lead Management</span>
+                  <span class="project-description">
+                    A practice workflow that tracks new inquiries in Google
+                    Sheets and sends email notifications through Gmail.
+                  </span>
+                  <span class="tag-row">
+                    <span>Zapier</span><span>Google Sheets</span><span>Gmail</span>
+                  </span>
+                </span>
+              </button>
+
+              <button class="project-card" type="button" data-project-title="Java Banking Management System"
+                aria-label="Open Java Banking System project preview">
+                <span class="project-image">
+                  <img src="assets/projects/java-banking-system.png"
+                    data-fallback="assets/projects/previews/java-banking-system.svg"
+                    alt="Java Banking Management System project preview" loading="lazy">
+                  <span class="media-empty" hidden>Project preview not added yet</span>
+                  <span class="image-open" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="project-card-content">
+                  <span class="project-type">ACADEMIC PROJECT</span>
+                  <span class="project-title">Java Banking Management System</span>
+                  <span class="project-description">
+                    A desktop application for managing accounts, transactions,
+                    balances, and transaction history.
+                  </span>
+                  <span class="tag-row">
+                    <span>Java</span><span>Java Swing</span><span>Database</span>
+                  </span>
+                </span>
+              </button>
+
+              <button class="project-card" type="button" data-project-title="Python Food Ordering and Management System"
+                aria-label="Open Python Food Ordering project preview">
+                <span class="project-image">
+                  <img src="assets/projects/python-food-ordering.png"
+                    data-fallback="assets/projects/previews/python-food-ordering.svg"
+                    alt="Python Food Ordering System project preview" loading="lazy">
+                  <span class="media-empty" hidden>Project preview not added yet</span>
+                  <span class="image-open" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="project-card-content">
+                  <span class="project-type">GROUP SCHOOL PROJECT</span>
+                  <span class="project-title">Food Ordering System</span>
+                  <span class="project-description">
+                    A desktop ordering app with user accounts, a menu, a cart,
+                    and saved order records.
+                  </span>
+                  <span class="tag-row">
+                    <span>Python</span><span>PyQt6</span><span>SQLite</span>
+                  </span>
+                </span>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- CERTIFICATES -->
+          <div class="board-panel" id="panel-certificates" role="tabpanel" aria-labelledby="tab-certificates"
+            data-panel="certificates" hidden>
+            <div class="certificates-grid">
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/business-analytics-with-excel.pdf"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="assets/certificates/business-analytics-with-excel.jpg"
+                    alt="Business Analytics with Excel certificate" loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>Business Analytics with Excel</h3>
+                  <a class="certificate-link" href="assets/certificates/business-analytics-with-excel.pdf"
+                    target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/introduction-to-artificial-intelligence.pdf"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="assets/certificates/introduction-to-artificial-intelligence.jpg"
+                    alt="Introduction to Artificial Intelligence certificate" loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>Introduction to Artificial Intelligence</h3>
+                  <a class="certificate-link" href="assets/certificates/introduction-to-artificial-intelligence.pdf"
+                    target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/n8n-no-code-ai-agent-builder.pdf"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="assets/certificates/n8n-no-code-ai-agent-builder.jpg"
+                    alt="n8n No-Code AI Agent Builder certificate" loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>n8n No-Code AI Agent Builder</h3>
+                  <a class="certificate-link" href="assets/certificates/n8n-no-code-ai-agent-builder.pdf"
+                    target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/databricks-generative-ai.pdf" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="assets/certificates/databricks-generative-ai.jpg" alt="Databricks Generative AI certificate"
+                    loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>Databricks Generative AI</h3>
+                  <a class="certificate-link" href="assets/certificates/databricks-generative-ai.pdf" target="_blank"
+                    rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/introduction-to-generative-ai.pdf"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="assets/certificates/introduction-to-generative-ai.jpg"
+                    alt="Introduction to Generative AI certificate" loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>Introduction to Generative AI</h3>
+                  <a class="certificate-link" href="assets/certificates/introduction-to-generative-ai.pdf"
+                    target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+              <article class="certificate-card">
+                <a class="certificate-preview" href="assets/certificates/strategic-planning-in-the-ai-age.pdf"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="assets/certificates/strategic-planning-in-the-ai-age.jpg"
+                    alt="Strategic Planning in the AI Age certificate" loading="lazy">
+                  <span class="preview-fallback" hidden>Preview unavailable</span>
+                </a>
+                <div class="certificate-info">
+                  <h3>Strategic Planning in the AI Age</h3>
+                  <a class="certificate-link" href="assets/certificates/strategic-planning-in-the-ai-age.pdf"
+                    target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- TOOLS -->
+          <div class="board-panel" id="panel-tools" role="tabpanel" aria-labelledby="tab-tools" data-panel="tools"
+            hidden>
+            <p class="tools-intro">
+              A selection of tools I use for automation, organization,
+              communication, and creative work.
+            </p>
+
+            <div class="tools-grid">
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/zapier.svg"
+                    alt=""></span><span>Zapier</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/n8n.svg"
+                    alt=""></span><span>n8n</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/chatgpt.svg"
+                    alt=""></span><span>ChatGPT</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gemini.svg"
+                    alt=""></span><span>Google Gemini</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/notion.svg"
+                    alt=""></span><span>Notion AI</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gmail.svg"
+                    alt=""></span><span>Gmail</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gdrive.svg"
+                    alt=""></span><span>Google Drive</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gdocs.svg"
+                    alt=""></span><span>Google Docs</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gsheets.svg"
+                    alt=""></span><span>Google Sheets</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gslides.svg"
+                    alt=""></span><span>Google Slides</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/canva.svg"
+                    alt=""></span><span>Canva</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/capcut.svg"
+                    alt=""></span><span>CapCut</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/am.svg"
+                    alt=""></span><span>Alight Motion</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/mword.svg"
+                    alt=""></span><span>Microsoft Word</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/mppt.svg"
+                    alt=""></span><span>PowerPoint</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/zoom.svg"
+                    alt=""></span><span>Zoom</span></div>
+              <div class="tool-item"><span class="tool-icon-shell"><img src="assets/icons/gmeet.svg"
+                    alt=""></span><span>Google Meet</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. CONTACT -->
+    <section class="contact section-wrap" id="contact">
+      <div class="section-heading">
+        <p class="eyebrow">SAY HELLO</p>
+        <h2>Let's talk<span>.</span></h2>
+        <p class="section-intro">Have a question or an idea? Send me a message.</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-note neumorphic-card">
+          <h3>Start a conversation</h3>
+          <p>Feel free to reach out about a project, a collaboration, or just to connect.</p>
+          <a class="email-link" href="mailto:johndrey.va@gmail.com">johndrey.va@gmail.com</a>
+          <p class="contact-small">Messages sent using this form go to my inbox.</p>
+        </div>
+
+        <form class="contact-form neumorphic-card" id="contact-form" novalidate>
+          <div class="honeypot" aria-hidden="true">
+            <label for="contact-website">Leave this field empty</label>
+            <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field-group">
+            <label for="contact-name">Your name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Enter your name" required
+              minlength="2" aria-describedby="name-error">
+            <span class="field-error" id="name-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field-group">
+            <label for="contact-email">Email address</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"
+              required aria-describedby="email-error">
+            <span class="field-error" id="email-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field-group">
+            <label for="contact-message">Your message</label>
+            <textarea id="contact-message" name="message" rows="5"
+              placeholder="Tell me a little about what you have in mind" required minlength="10"
+              aria-describedby="message-error"></textarea>
+            <span class="field-error" id="message-error" aria-live="polite"></span>
+          </div>
+
+          <button class="send-message-button" id="send-message-button" type="submit" aria-label="Send message">
+            <span class="outline" aria-hidden="true"></span>
+            <span class="state state--default">
+              <span class="send-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M14.22 21.63c-1.18 0-2.85-.83-4.17-4.8l-.72-2.16-2.16-.72c-3.96-1.32-4.79-2.99-4.79-4.17s.83-2.85 4.79-4.18l8.49-2.83c2.12-.71 3.89-.5 4.98.58 1.09 1.08 1.3 2.86.59 4.98l-2.83 8.49c-1.33 3.98-3 4.81-4.18 4.81ZM7.64 7.03c-2.78.93-3.77 2.03-3.77 2.75s.99 1.82 3.77 2.74l2.52.84c.22.07.4.25.47.47l.84 2.52c.92 2.78 2.03 3.77 2.75 3.77s1.82-.99 2.75-3.77l2.83-8.49c.51-1.54.42-2.8-.23-3.45-.65-.65-1.91-.73-3.44-.22L7.64 7.03Z"
+                    fill="currentColor" />
+                  <path d="m10.11 14.4 4.11-4.87" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="button-label" aria-hidden="true">
+                <span style="--i:0">S</span><span style="--i:1">e</span><span style="--i:2">n</span><span
+                  style="--i:3">d</span>
+                <span class="letter-space"></span>
+                <span style="--i:4">M</span><span style="--i:5">e</span><span style="--i:6">s</span><span
+                  style="--i:7">s</span><span style="--i:8">a</span><span style="--i:9">g</span><span
+                  style="--i:10">e</span>
+              </span>
+            </span>
+
+            <span class="state state--sent" aria-hidden="true">
+              <span class="send-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="m7 12 3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="button-label">
+                <span style="--i:5">S</span><span style="--i:6">e</span><span style="--i:7">n</span><span
+                  style="--i:8">t</span>
+              </span>
+            </span>
+          </button>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>John Drey Batal @ <span id="current-year">2026</span></span>
+  </footer>
+
+  <!-- Project image zoom modal -->
+  <div class="lightbox" id="project-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close project preview">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m6 6 12 12M18 6 6 18" />
+      </svg>
+    </button>
+    <div class="lightbox-frame" id="lightbox-frame">
+      <img id="lightbox-image" alt="" draggable="false">
+    </div>
+    <div class="lightbox-caption">
+      <h2 id="lightbox-title">Project preview</h2>
+      <p>Scroll to zoom. Drag the image to move it when zoomed in.</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
